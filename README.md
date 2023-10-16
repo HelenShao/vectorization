@@ -191,7 +191,8 @@ remark #15417: vectorization support: number of FP up converts: single precision
 remark #15418: vectorization support: number of FP down converts: double precision to single precision 1   [ nbody.cc(94,32) ]
 ```
 
-We can turn off the casting by add the switch `–DNo_FP_Conv`. Modify `Makefile` as follows:
+We can turn off the casting by add the switch `–DNo_FP_Conv`. This will enable another block of the .cc code to run, namely the block that does not down convert double precision and does not up convert 2 single precision. 
+Modify `Makefile` as follows:
 
 ```
 ICXXFLAGS = -O2 -xCORE-AVX512 -qopt-zmm-usage=high -DNo_FP_Conv
